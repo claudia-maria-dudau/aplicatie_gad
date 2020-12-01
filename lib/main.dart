@@ -1,4 +1,4 @@
-import 'currency_exchange.dart' as app;
+import 'number_shapes.dart' as app;
 
 void main() {
   app.main();

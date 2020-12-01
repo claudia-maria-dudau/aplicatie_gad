@@ -41,13 +41,17 @@ class _HomePageState extends State<HomePage> {
 
   void _convert(){
     double value;
-
-    if (selected == Valuta.eur)
-      value = double.parse(text) * 4.87;
-    else if (selected == Valuta.usd)
-      value = double.parse(text) * 4.11;
-    else
-      value = double.parse(text) * 5.45;
+    try {
+      if (selected == Valuta.eur)
+        value = double.parse(text) * 4.87;
+      else if (selected == Valuta.usd)
+        value = double.parse(text) * 4.11;
+      else
+        value = double.parse(text) * 5.45;
+    }
+    catch(e){
+      throw(e);
+    }
 
     setState(() {
       convertedValue = value.toStringAsFixed(2) + " RON";
