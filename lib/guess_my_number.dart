@@ -123,7 +123,7 @@ class _HomePageState extends State<HomePage> {
                                 _error = '';
                               });
 
-                              int _inputNumber = int.parse(_inputText);
+                              final int _inputNumber = int.parse(_inputText);
                               if (_num.compare(_inputNumber) == 0) {
                                 setState(() {
                                   _message = 'You tried ' +

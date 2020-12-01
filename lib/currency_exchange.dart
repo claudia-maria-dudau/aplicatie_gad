@@ -50,11 +50,11 @@ class _HomePageState extends State<HomePage> {
         value = double.parse(text) * 5.45;
     }
     catch(e){
-      throw(e);
+      rethrow;
     }
 
     setState(() {
-      convertedValue = value.toStringAsFixed(2) + " RON";
+      convertedValue = value.toStringAsFixed(2) + ' RON';
     });
   }
 
@@ -73,9 +73,9 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Image(image: AssetImage('resurse/monede.jfif')),
+              const Image(image: AssetImage('resurse/monede.jfif')),
               TextField(
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20,
                 ),
                 onChanged: (String value){
@@ -92,7 +92,7 @@ class _HomePageState extends State<HomePage> {
                   errorText: error,
                 ),
               ),
-              RadioListTile(
+              RadioListTile<Valuta>(
                 title: const Text('EUR'),
                 value: Valuta.eur,
                 groupValue: selected,
@@ -102,7 +102,7 @@ class _HomePageState extends State<HomePage> {
                   });
                 }
                 ),
-              RadioListTile(
+              RadioListTile<Valuta>(
                   title: const Text('USD'),
                   value: Valuta.usd,
                   groupValue: selected,
@@ -112,7 +112,7 @@ class _HomePageState extends State<HomePage> {
                     });
                   }
               ),
-              RadioListTile(
+              RadioListTile<Valuta>(
                   title: const Text('GBP'),
                   value: Valuta.gbp,
                   groupValue: selected,
@@ -142,7 +142,7 @@ class _HomePageState extends State<HomePage> {
               ),
               Text(
                 '$convertedValue',
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.blueGrey,
                   fontSize: 25,
                 )
