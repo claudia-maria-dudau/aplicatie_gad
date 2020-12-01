@@ -30,6 +30,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final TextEditingController textField = TextEditingController();
   String _message = '';
   String _inputText;
   String _error = '';
@@ -42,131 +43,142 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Center(child: Text(widget.title)),
       ),
-      body: Padding(
+      body: ListView(
         padding: const EdgeInsets.fromLTRB(3, 10, 3, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              "I'm thinking of a number between 1 and 100",
-              style: TextStyle(
-                fontSize: 23,
+        children: <Widget>[
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              const Center(
+                child: Text(
+                  "I'm thinking of a number between 1 and 100",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 23,
+                  ),
+                ),
               ),
-            ),
-            const Text(
-              "It's your turn to guess my number!",
-              style: TextStyle(
-                fontSize: 18,
+              const Text(
+                "It's your turn to guess my number!",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 18,
+                ),
               ),
-            ),
-            Text(
-              '$_message',
-              style: const TextStyle(
-                fontSize: 32,
-                color: Colors.blueGrey,
+              Text(
+                '$_message',
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 32,
+                  color: Colors.blueGrey,
+                ),
               ),
-            ),
-            Card(
-              elevation: 3,
-              shadowColor: Colors.grey,
-              child: Column(
-                children: <Widget>[
-                  const Center(
-                    child: Text(
+              Card(
+                elevation: 3,
+                shadowColor: Colors.grey,
+                child: Column(
+                  children: <Widget>[
+                    const Text(
                       'Try a number',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 28,
                         color: Colors.blueGrey,
                       ),
                     ),
-                  ),
-                  TextField(
-                    style: const TextStyle(
-                      fontSize: 18,
+                    TextField(
+                      style: const TextStyle(
+                        fontSize: 18,
+                      ),
+                      onChanged: (String value) {
+                        setState(() {
+                          _inputText = value;
+                        });
+                      },
+                      keyboardType: TextInputType.number,
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.digitsOnly,
+                      ],
+                      controller: textField,
+                      decoration: InputDecoration(
+                        errorText: _error,
+                      ),
                     ),
-                    onChanged: (String value) {
-                      setState(() {
-                        _inputText = value;
-                      });
-                    },
-                    keyboardType: TextInputType.number,
-                    inputFormatters: <TextInputFormatter>[
-                      FilteringTextInputFormatter.digitsOnly,
-                    ],
-                    decoration: InputDecoration(
-                      errorText: _error,
-                    ),
-                  ),
-                  FlatButton(
-                      child: Text(_buttonText),
-                      onPressed: () {
-                        if (_inputText == '')
-                          setState(() {
-                            _error = 'Please eneter a number';
-                          });
-                        else {
-                          if (_buttonText == 'Reset'){
-                            _num = RandomNumber();
+                    FlatButton(
+                        child: Text(_buttonText),
+                        onPressed: () {
+                          textField.clear();
+                          if (_inputText == '')
                             setState(() {
-                              _buttonText = 'Guess';
+                              _error = 'Please enter a number';
                             });
-                          } else {
-                            setState((){
-                              _error = '';
-                            });
-
-                            int _inputNumber = int.parse(_inputText);
-                            if (_num.compare(_inputNumber) == 0) {
+                          else {
+                            if (_buttonText == 'Reset') {
+                              _num = RandomNumber();
                               setState(() {
-                                _message = 'You tried ' +
-                                    _inputText +
-                                    '\n You guessed right.';
-                                _buttonText = 'Reset';
+                                _buttonText = 'Guess';
+                              });
+                            } else {
+                              setState(() {
+                                _error = '';
                               });
 
-                              showDialog<String>(
-                                  context: context,
-                                  builder: (_) => AlertDialog(
-                                        title: const Text('You guessed right'),
-                                        content: Text('It was' + _inputText),
-                                        actions: <Widget>[
-                                          FlatButton(
-                                            child: const Text('Try again'),
-                                            onPressed: () {
-                                              _buttonText = 'Guess';
-                                              _inputText = '';
-                                            },
-                                          ),
-                                          FlatButton(
-                                            child: const Text('OK'),
-                                            onPressed: () {
-                                              setState(() {
-                                                _inputText = '';
-                                              });
-                                            },
-                                          ),
-                                        ],
-                                      ));
-                            } else if (_num.compare(_inputNumber) == 1)
-                              setState(() {
-                                _message =
-                                    'You tried ' + _inputText + '\n Try lower';
-                                _inputText = '';
-                              });
-                            else
-                              setState(() {
-                                _message =
-                                    'You tried ' + _inputText + '\n Try higher';
-                                _inputText = '';
-                              });
+                              int _inputNumber = int.parse(_inputText);
+                              if (_num.compare(_inputNumber) == 0) {
+                                setState(() {
+                                  _message = 'You tried ' +
+                                      _inputText +
+                                      '\n You guessed right.';
+                                  _buttonText = 'Reset';
+                                });
+
+                                showDialog<String>(
+                                    context: context,
+                                    builder: (_) =>
+                                        AlertDialog(
+                                          title: const Text(
+                                              'You guessed right'),
+                                          content: Text('It was $_inputText'),
+                                          actions: <Widget>[
+                                            FlatButton(
+                                              child: const Text('Try again'),
+                                              onPressed: () {
+                                                _buttonText = 'Guess';
+                                              },
+                                            ),
+                                            FlatButton(
+                                              child: const Text('OK'),
+                                              onPressed: () {
+                                                setState(() {
+                                                  _buttonText = 'Reset';
+                                                });
+                                              },
+                                            ),
+                                          ],
+                                        ));
+                              } else if (_num.compare(_inputNumber) == 1)
+                                setState(() {
+                                  _message =
+                                  'You tried $_inputText \n Try lower';
+                                });
+                              else
+                                setState(() {
+                                  _message =
+                                  'You tried $_inputText \n Try higher';
+                                });
+                            }
                           }
-                        }
-                      }),
-                ],
+
+                          setState((){
+                            _inputText = '';
+                          });
+                        }),
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
+            ],
+          ),
+        ],
       ),
     );
   }
@@ -174,9 +186,9 @@ class _HomePageState extends State<HomePage> {
 
 class RandomNumber {
   RandomNumber() {
-    print(1);
     _random = Random();
     _number = _random.nextInt(100) + 1;
+    print(_number);
   }
 
   int _number;
