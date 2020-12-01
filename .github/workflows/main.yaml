@@ -3,7 +3,7 @@ on: push
 
 jobs:
   format:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Install Flutter
         uses: subosito/flutter-action@v1
@@ -16,7 +16,7 @@ jobs:
         run: flutter pub pub run --enable-asserts ci/bots/format.dart --set-exit-if-changed -n -l 120
 
   analyze:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Install Flutter
         uses: subosito/flutter-action@v1
