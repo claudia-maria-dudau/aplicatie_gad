@@ -1,4 +1,4 @@
-import 'number_shapes.dart' as app;
+import 'guess_my_number.dart' as app;
 
 void main() {
   app.main();

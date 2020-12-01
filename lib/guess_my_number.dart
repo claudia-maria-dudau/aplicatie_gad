@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
       body: Padding(
         padding: const EdgeInsets.fromLTRB(3, 10, 3, 0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             const Text(
               "I'm thinking of a number between 1 and 100",
@@ -110,34 +110,9 @@ class _HomePageState extends State<HomePage> {
                             setState(() {
                               _buttonText = 'Guess';
                             });
-
-                            showDialog<String>(
-                                context: context,
-                                builder: (_) => AlertDialog(
-                                      title: const Text('You guessed right'),
-                                      content: Text('It was' + _inputText),
-                                      actions: <Widget>[
-                                        FlatButton(
-                                          child: const Text('Try again'),
-                                          onPressed: () {
-                                            _buttonText = 'Guess';
-                                            _inputText = '';
-                                          },
-                                        ),
-                                        FlatButton(
-                                          child: const Text('OK'),
-                                          onPressed: () {
-                                            setState(() {
-                                              _inputText = '';
-                                            });
-                                          },
-                                        ),
-                                      ],
-                                    ));
-
                           } else {
                             int _inputNumber = int.parse(_inputText);
-                            if (_num.compare(_inputNumber) == 0)
+                            if (_num.compare(_inputNumber) == 0) {
                               setState(() {
                                 _message = 'You tried ' +
                                     _inputText +
@@ -145,7 +120,31 @@ class _HomePageState extends State<HomePage> {
                                 _buttonText = 'Reset';
                                 _inputText = '';
                               });
-                            else if (_num.compare(_inputNumber) == 1)
+
+                              showDialog<String>(
+                                  context: context,
+                                  builder: (_) => AlertDialog(
+                                        title: const Text('You guessed right'),
+                                        content: Text('It was' + _inputText),
+                                        actions: <Widget>[
+                                          FlatButton(
+                                            child: const Text('Try again'),
+                                            onPressed: () {
+                                              _buttonText = 'Guess';
+                                              _inputText = '';
+                                            },
+                                          ),
+                                          FlatButton(
+                                            child: const Text('OK'),
+                                            onPressed: () {
+                                              setState(() {
+                                                _inputText = '';
+                                              });
+                                            },
+                                          ),
+                                        ],
+                                      ));
+                            } else if (_num.compare(_inputNumber) == 1)
                               setState(() {
                                 _message =
                                     'You tried ' + _inputText + '\n Try lower';
