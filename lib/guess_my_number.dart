@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
   String _inputText;
   String _error = '';
   String _buttonText = 'Guess';
-  RandomNumber _num;
+  RandomNumber _num = RandomNumber();
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Text(
-              _message,
+              '$_message',
               style: const TextStyle(
                 fontSize: 32,
                 color: Colors.blueGrey,
@@ -105,12 +105,16 @@ class _HomePageState extends State<HomePage> {
                             _error = 'Please eneter a number';
                           });
                         else {
-                          if (_buttonText == 'Reset') {
+                          if (_buttonText == 'Reset'){
                             _num = RandomNumber();
                             setState(() {
                               _buttonText = 'Guess';
                             });
                           } else {
+                            setState((){
+                              _error = '';
+                            });
+
                             int _inputNumber = int.parse(_inputText);
                             if (_num.compare(_inputNumber) == 0) {
                               setState(() {
@@ -118,7 +122,6 @@ class _HomePageState extends State<HomePage> {
                                     _inputText +
                                     '\n You guessed right.';
                                 _buttonText = 'Reset';
-                                _inputText = '';
                               });
 
                               showDialog<String>(
@@ -171,6 +174,7 @@ class _HomePageState extends State<HomePage> {
 
 class RandomNumber {
   RandomNumber() {
+    print(1);
     _random = Random();
     _number = _random.nextInt(100) + 1;
   }
