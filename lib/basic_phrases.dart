@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
     'Vielen Dank!'
   ];
   final List<Color> _colors = <Color>[Colors.blueAccent, Colors.deepOrangeAccent, Colors.lightBlueAccent, Colors.orangeAccent];
-  List<Color> _cellColors = <Color>[];
+  final List<Color> _cellColors = <Color>[];
 
   //initializare culori
   void _initColors(int index){
