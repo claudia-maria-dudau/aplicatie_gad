@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
   bool _vizibil = false;
 
   List<int> _verificare() {
-    List<int> lista = <int>[];
+    final List<int> lista = <int>[];
 
     //coloana
     for (int i = 0; i < 3; i++) {
@@ -86,7 +86,6 @@ class _HomePageState extends State<HomePage> {
       ),
       body: ListView(
         scrollDirection: Axis.vertical,
-        shrinkWrap: true,
         children: <Widget>[
           GridView.builder(
               shrinkWrap: true,
@@ -122,7 +121,7 @@ class _HomePageState extends State<HomePage> {
                       }
 
                       //verificare draw
-                      if(_cellColors.every((element) => element != Colors.white))
+                      if(_cellColors.every((Color element) => element != Colors.white))
                         _vizibil = true;
                     });
                   },
@@ -137,9 +136,9 @@ class _HomePageState extends State<HomePage> {
           Visibility(
             visible: _vizibil,
             child: RaisedButton(
-              child: Text(
+              child: const Text(
                 'Try Again',
-                style: const TextStyle(
+                style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
@@ -147,7 +146,8 @@ class _HomePageState extends State<HomePage> {
               color: Colors.teal,
               onPressed: () {
                 setState(() {
-                  for (int i = 0; i < 9; i++) _cellColors[i] = Colors.white;
+                  for (int i = 0; i < 9; i++)
+                    _cellColors[i] = Colors.white;
                   _vizibil = false;
                 });
               },

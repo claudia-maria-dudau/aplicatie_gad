@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              const Image(image: AssetImage('resurse/monede.jfif')),
+              const Image(image: AssetImage('assets/monede.jfif')),
               TextField(
                 style: const TextStyle(
                   fontSize: 20,
