@@ -1,4 +1,4 @@
-import 'guess_my_number.dart' as app;
+import 'tic_tac_toe.dart' as app;
 
 void main() {
   app.main();
