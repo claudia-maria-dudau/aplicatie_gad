@@ -121,7 +121,8 @@ class _HomePageState extends State<HomePage> {
                       }
 
                       //verificare draw
-                      if(_cellColors.every((Color element) => element != Colors.white))
+                      if (_cellColors
+                          .every((Color element) => element != Colors.white))
                         _vizibil = true;
                     });
                   },
@@ -146,8 +147,7 @@ class _HomePageState extends State<HomePage> {
               color: Colors.teal,
               onPressed: () {
                 setState(() {
-                  for (int i = 0; i < 9; i++)
-                    _cellColors[i] = Colors.white;
+                  for (int i = 0; i < 9; i++) _cellColors[i] = Colors.white;
                   _vizibil = false;
                 });
               },
