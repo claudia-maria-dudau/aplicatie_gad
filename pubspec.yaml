@@ -37,9 +37,20 @@ dependencies:
   # api
   http: ^0.12.2
 
+  #generare clase
+  built_value: ^7.1.0
+  built_collection: ^4.3.2
+
+  #reducer
+  flutter_redux: ^0.7.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  #builder
+  build_runner: ^1.10.0
+  built_value_generator: ^7.1.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

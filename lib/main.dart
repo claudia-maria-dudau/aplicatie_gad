@@ -1,4 +1,4 @@
-import 'movies.dart' as app;
+import 'basic_phrases.dart' as app;
 
 void main() {
   app.main();
