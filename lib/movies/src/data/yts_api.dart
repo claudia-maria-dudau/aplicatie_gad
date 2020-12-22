@@ -50,7 +50,7 @@ class YtsApi {
     return _resultedMovies;
   }
 
-  Future<List<Movie>> reloadMovies({String value, String criteria}) async {
+  Future<List<Movie>> reloadMovies() async {
     _page += 1;
 
     //fetch movie list

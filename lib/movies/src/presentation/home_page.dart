@@ -1,3 +1,4 @@
+import 'package:aplicatie_gad/movies/src/actions/reload_movies.dart';
 import 'package:aplicatie_gad/movies/src/containers/is_loading_container.dart';
 import 'package:aplicatie_gad/movies/src/containers/movies_container.dart';
 import 'package:aplicatie_gad/movies/src/models/movie.dart';
@@ -20,10 +21,19 @@ class _HomePageState extends State<HomePage> {
   final TextEditingController _textField = TextEditingController();
   String _inputValue = '';
   Criteria _selected = Criteria.title;
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState(){
+    _scrollController.addListener(() {
+      if(_scrollController.position.pixels == _scrollController.position.maxScrollExtent * 0.75){
+        //store.dispatch(const ReloadMovies());
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-
     return IsLoadingContainer(builder: (BuildContext context, bool isLoading) {
       return Scaffold(
         appBar: AppBar(
@@ -109,13 +119,13 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Expanded(
                   flex: 6,
-                  child: ListView.builder(
-                      /*gridDelegate:
+                  child: GridView.builder(
+                      gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 1,
                         mainAxisSpacing: 16,
                       ),
-                       */
+                      controller: _scrollController,
                       itemCount: movies.length,
                       itemBuilder: (BuildContext context, int index) {
                         final Movie _movie = movies[index];
