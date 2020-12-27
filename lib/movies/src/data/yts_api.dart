@@ -10,54 +10,28 @@ class YtsApi {
         _client = client;
 
   final Client _client;
-  String _url;
-  int _page;
-  Future<List<Movie>> getMovies({String value, String criteria}) async {
-    //filter
-    if (value != null && criteria != null) {
-      switch (criteria) {
-      //title
-        case 'title':
-          {
-            _url = 'https://yts.mx/api/v2/list_movies.json?title=$criteria';
-          }
-          break;
 
-      //year
-        case 'genre':
-          {
-            _url = 'https://yts.mx/api/v2/list_movies.json?genre=$criteria';
-          }
-          break;
+  Future<List<Movie>> getMovies(int page, String title, String quality, String genre, String orderBy) async {
+    final Uri _url = Uri(
+      scheme: 'https',
+      host: 'yts.mx',
+      pathSegments: <String>['api', 'v2', 'list_movies.json'],
+      queryParameters: <String, String>{
+        'limit': '20',
+        'page': '$page',
+        if (title != null) 'title' : title,
+        if (quality!= null) 'quality': quality,
+        if (genre != null) 'genre': genre,
+        'order_by': orderBy,
       }
-    }
-
-    //no filter
-    else {
-      _url = 'https://yts.mx/api/v2/list_movies.json';
-    }
-
-    //encoding url
-    _url = Uri.encodeFull(_url);
+    );
+    
     //fetch movie list
-    final Response _response = await get(_url + '?page=1');
+    final Response _response = await get(_url);
     final List<dynamic> _movies = jsonDecode(_response.body)['data']['movies'];
     final List<Movie> _resultedMovies =
         _movies.map((dynamic movie) => Movie.fromJson(movie)).toList();
 
-    _page = 1;
-
-    return _resultedMovies;
-  }
-
-  Future<List<Movie>> reloadMovies() async {
-    _page += 1;
-
-    //fetch movie list
-    final Response _response = await get(_url + '?page=$_page');
-    final List<dynamic> _movies = jsonDecode(_response.body)['data']['movies'];
-    final List<Movie> _resultedMovies =
-    _movies.map((dynamic movie) => Movie.fromJson(movie)).toList();
     return _resultedMovies;
   }
 }

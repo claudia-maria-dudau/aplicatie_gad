@@ -11,7 +11,11 @@ abstract class AppState implements Built<AppState, AppStateBuilder>{
 
   factory AppState.initialState() {
     final AppStateBuilder builder = AppStateBuilder();
-    builder.isLoading = true;
+    builder
+      ..isLoading = true
+      ..page = 1
+      ..orderBy = 'desc';
+
     return builder.build();
   }
 
@@ -20,4 +24,17 @@ abstract class AppState implements Built<AppState, AppStateBuilder>{
   BuiltList<Movie> get movies;
 
   bool get isLoading;
+
+  int get page;
+
+  @nullable
+  String get title;
+
+  @nullable
+  String get quality;
+
+  @nullable
+  String get genre;
+
+  String get orderBy;
 }

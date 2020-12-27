@@ -247,6 +247,20 @@
             </list>
           </value>
         </entry>
+        <entry key="freezed">
+          <value>
+            <list>
+              <option value="C:/Flutter/.pub-cache/hosted/pub.dartlang.org/freezed-0.12.2/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="freezed_annotation">
+          <value>
+            <list>
+              <option value="C:/Flutter/.pub-cache/hosted/pub.dartlang.org/freezed_annotation-0.12.0/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="glob">
           <value>
             <list>
@@ -646,6 +660,8 @@
       <root url="file://C:/Flutter/.pub-cache/hosted/pub.dartlang.org/file-5.2.1/lib" />
       <root url="file://C:/Flutter/.pub-cache/hosted/pub.dartlang.org/fixnum-0.10.11/lib" />
       <root url="file://C:/Flutter/.pub-cache/hosted/pub.dartlang.org/flutter_redux-0.7.0/lib" />
+      <root url="file://C:/Flutter/.pub-cache/hosted/pub.dartlang.org/freezed-0.12.2/lib" />
+      <root url="file://C:/Flutter/.pub-cache/hosted/pub.dartlang.org/freezed_annotation-0.12.0/lib" />
       <root url="file://C:/Flutter/.pub-cache/hosted/pub.dartlang.org/glob-1.2.0/lib" />
       <root url="file://C:/Flutter/.pub-cache/hosted/pub.dartlang.org/graphs-0.2.0/lib" />
       <root url="file://C:/Flutter/.pub-cache/hosted/pub.dartlang.org/html-0.14.0+4/lib" />
