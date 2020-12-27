@@ -119,12 +119,16 @@ class Number {
   final int _number;
 
   bool isSquare() {
-    if (sqrt(_number).toInt() == sqrt(_number)) return true;
+    if (sqrt(_number).toInt() == sqrt(_number)) {
+      return true;
+    }
     return false;
   }
 
   bool isTriangular() {
-    if (sqrt(8 * _number + 1).toInt() == sqrt(8 * _number + 1)) return true;
+    if (sqrt(8 * _number + 1).toInt() == sqrt(8 * _number + 1)) {
+      return true;
+    }
     return false;
   }
 }
