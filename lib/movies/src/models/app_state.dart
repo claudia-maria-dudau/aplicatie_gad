@@ -14,7 +14,11 @@ abstract class AppState implements Built<AppState, AppStateBuilder>{
     builder
       ..isLoading = true
       ..page = 1
-      ..orderBy = 'desc';
+      ..title = ''
+      ..quality = 'All'
+      ..genre = 'All'
+      ..orderBy = 'desc'
+      ..message = '';
 
     return builder.build();
   }
@@ -27,14 +31,18 @@ abstract class AppState implements Built<AppState, AppStateBuilder>{
 
   int get page;
 
-  @nullable
   String get title;
 
-  @nullable
   String get quality;
 
-  @nullable
   String get genre;
 
   String get orderBy;
+
+  @nullable
+  int get selectedMovie;
+
+  String get message;
 }
+
+/* flutter pub run build_runner watch --delete-conflicting-outputs */

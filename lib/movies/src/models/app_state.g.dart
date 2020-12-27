@@ -21,6 +21,10 @@ class _$AppState extends AppState {
   final String genre;
   @override
   final String orderBy;
+  @override
+  final int selectedMovie;
+  @override
+  final String message;
 
   factory _$AppState([void Function(AppStateBuilder) updates]) =>
       (new AppStateBuilder()..update(updates)).build();
@@ -32,7 +36,9 @@ class _$AppState extends AppState {
       this.title,
       this.quality,
       this.genre,
-      this.orderBy})
+      this.orderBy,
+      this.selectedMovie,
+      this.message})
       : super._() {
     if (movies == null) {
       throw new BuiltValueNullFieldError('AppState', 'movies');
@@ -43,8 +49,20 @@ class _$AppState extends AppState {
     if (page == null) {
       throw new BuiltValueNullFieldError('AppState', 'page');
     }
+    if (title == null) {
+      throw new BuiltValueNullFieldError('AppState', 'title');
+    }
+    if (quality == null) {
+      throw new BuiltValueNullFieldError('AppState', 'quality');
+    }
+    if (genre == null) {
+      throw new BuiltValueNullFieldError('AppState', 'genre');
+    }
     if (orderBy == null) {
       throw new BuiltValueNullFieldError('AppState', 'orderBy');
+    }
+    if (message == null) {
+      throw new BuiltValueNullFieldError('AppState', 'message');
     }
   }
 
@@ -65,7 +83,9 @@ class _$AppState extends AppState {
         title == other.title &&
         quality == other.quality &&
         genre == other.genre &&
-        orderBy == other.orderBy;
+        orderBy == other.orderBy &&
+        selectedMovie == other.selectedMovie &&
+        message == other.message;
   }
 
   @override
@@ -74,12 +94,18 @@ class _$AppState extends AppState {
         $jc(
             $jc(
                 $jc(
-                    $jc($jc($jc(0, movies.hashCode), isLoading.hashCode),
-                        page.hashCode),
-                    title.hashCode),
-                quality.hashCode),
-            genre.hashCode),
-        orderBy.hashCode));
+                    $jc(
+                        $jc(
+                            $jc(
+                                $jc($jc(0, movies.hashCode),
+                                    isLoading.hashCode),
+                                page.hashCode),
+                            title.hashCode),
+                        quality.hashCode),
+                    genre.hashCode),
+                orderBy.hashCode),
+            selectedMovie.hashCode),
+        message.hashCode));
   }
 
   @override
@@ -91,7 +117,9 @@ class _$AppState extends AppState {
           ..add('title', title)
           ..add('quality', quality)
           ..add('genre', genre)
-          ..add('orderBy', orderBy))
+          ..add('orderBy', orderBy)
+          ..add('selectedMovie', selectedMovie)
+          ..add('message', message))
         .toString();
   }
 }
@@ -127,6 +155,14 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   String get orderBy => _$this._orderBy;
   set orderBy(String orderBy) => _$this._orderBy = orderBy;
 
+  int _selectedMovie;
+  int get selectedMovie => _$this._selectedMovie;
+  set selectedMovie(int selectedMovie) => _$this._selectedMovie = selectedMovie;
+
+  String _message;
+  String get message => _$this._message;
+  set message(String message) => _$this._message = message;
+
   AppStateBuilder();
 
   AppStateBuilder get _$this {
@@ -138,6 +174,8 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _quality = _$v.quality;
       _genre = _$v.genre;
       _orderBy = _$v.orderBy;
+      _selectedMovie = _$v.selectedMovie;
+      _message = _$v.message;
       _$v = null;
     }
     return this;
@@ -168,7 +206,9 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
               title: title,
               quality: quality,
               genre: genre,
-              orderBy: orderBy);
+              orderBy: orderBy,
+              selectedMovie: selectedMovie,
+              message: message);
     } catch (_) {
       String _$failedField;
       try {

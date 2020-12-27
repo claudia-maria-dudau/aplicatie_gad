@@ -19,13 +19,14 @@ class YtsApi {
       queryParameters: <String, String>{
         'limit': '20',
         'page': '$page',
-        if (title != null) 'title' : title,
-        if (quality!= null) 'quality': quality,
-        if (genre != null) 'genre': genre,
+        if (title != '') 'query_term' : 'Movie Title=$title',
+        if (quality != 'All') 'quality': quality,
+        if (genre != 'All') 'genre': genre,
         'order_by': orderBy,
       }
     );
-    
+    print(_url);
+
     //fetch movie list
     final Response _response = await get(_url);
     final List<dynamic> _movies = jsonDecode(_response.body)['data']['movies'];
@@ -33,5 +34,6 @@ class YtsApi {
         _movies.map((dynamic movie) => Movie.fromJson(movie)).toList();
 
     return _resultedMovies;
+
   }
 }

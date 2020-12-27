@@ -4,6 +4,7 @@ import 'package:aplicatie_gad/movies/src/middleware/app_middleware.dart';
 import 'package:aplicatie_gad/movies/src/models/app_state.dart';
 import 'package:aplicatie_gad/movies/src/reducer/reducer.dart';
 import 'package:aplicatie_gad/movies/src/presentation/home_page.dart';
+import 'package:aplicatie_gad/movies/src/presentation/movie_detail.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
@@ -32,9 +33,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreProvider<AppState>(
       store: store,
-      child: const MaterialApp(
+      child: MaterialApp(
         title: 'Movies',
-        home: HomePage(title: 'Movies'),
+        home: const HomePage(title: 'Movies'),
+        routes: <String, WidgetBuilder>{
+          '/movieDetail': (BuildContext context) => const MovieDetail()
+        },
       ),
     );
   }
