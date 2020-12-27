@@ -24,31 +24,31 @@ AppState reducer(AppState state, dynamic action) {
     builder
       ..isLoading = false
       ..message = 'Nu exista filme';
-  } else if (action is UpdatePage){
+  } else if (action is UpdatePage) {
     builder
       ..movies.clear()
       ..page = action.page;
-  }else if (action is UpdateTitle){
+  } else if (action is UpdateTitle) {
     builder
       ..movies.clear()
       ..title = action.title
       ..page = 1;
-  } else if (action is UpdateQuality){
+  } else if (action is UpdateQuality) {
     builder
       ..movies.clear()
       ..quality = action.quality
       ..page = 1;
-  } else if (action is UpdateGenre){
+  } else if (action is UpdateGenre) {
     builder
       ..movies.clear()
       ..genre = action.genre
       ..page = 1;
-  } else if (action is UpdateOrderBy){
+  } else if (action is UpdateOrderBy) {
     builder
       ..movies.clear()
       ..orderBy = action.orderBy == 'desc' ? 'asc' : 'desc'
       ..page = 1;
-  } else if (action is SetSelectedMovie){
+  } else if (action is SetSelectedMovie) {
     builder.selectedMovie = action.movieId;
   }
 

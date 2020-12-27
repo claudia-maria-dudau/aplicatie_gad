@@ -15,5 +15,5 @@ part 'serializers.g.dart';
   Movie,
 ])
 Serializers serializers = (_$serializers.toBuilder() //
-  ..addPlugin(StandardJsonPlugin()))
+      ..addPlugin(StandardJsonPlugin()))
     .build();

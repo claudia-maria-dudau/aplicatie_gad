@@ -134,10 +134,9 @@ class _HomePageState extends State<HomePage> {
 
                                 showDialog<String>(
                                     context: context,
-                                    builder: (_) =>
-                                        AlertDialog(
-                                          title: const Text(
-                                              'You guessed right'),
+                                    builder: (_) => AlertDialog(
+                                          title:
+                                              const Text('You guessed right'),
                                           content: Text('It was $_inputText'),
                                           actions: <Widget>[
                                             FlatButton(
@@ -159,17 +158,17 @@ class _HomePageState extends State<HomePage> {
                               } else if (_num.compare(_inputNumber) == 1)
                                 setState(() {
                                   _message =
-                                  'You tried $_inputText \n Try lower';
+                                      'You tried $_inputText \n Try lower';
                                 });
                               else
                                 setState(() {
                                   _message =
-                                  'You tried $_inputText \n Try higher';
+                                      'You tried $_inputText \n Try higher';
                                 });
                             }
                           }
 
-                          setState((){
+                          setState(() {
                             _inputText = '';
                           });
                         }),

@@ -147,7 +147,9 @@ class _HomePageState extends State<HomePage> {
               color: Colors.teal,
               onPressed: () {
                 setState(() {
-                  for (int i = 0; i < 9; i++) _cellColors[i] = Colors.white;
+                  for (int i = 0; i < 9; i++) {
+                    _cellColors[i] = Colors.white;
+                  }
                   _vizibil = false;
                 });
               },

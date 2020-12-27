@@ -6,7 +6,7 @@ import 'movie.dart';
 
 part 'app_state.g.dart';
 
-abstract class AppState implements Built<AppState, AppStateBuilder>{
+abstract class AppState implements Built<AppState, AppStateBuilder> {
   factory AppState([void Function(AppStateBuilder) updates]) = _$AppState;
 
   factory AppState.initialState() {

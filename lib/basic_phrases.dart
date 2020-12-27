@@ -42,12 +42,17 @@ class _HomePageState extends State<HomePage> {
     'Multumesc frumos!',
     'Vielen Dank!'
   ];
-  final List<Color> _colors = <Color>[Colors.blueAccent, Colors.deepOrangeAccent, Colors.lightBlueAccent, Colors.orangeAccent];
+  final List<Color> _colors = <Color>[
+    Colors.blueAccent,
+    Colors.deepOrangeAccent,
+    Colors.lightBlueAccent,
+    Colors.orangeAccent
+  ];
   final List<Color> _cellColors = <Color>[];
 
   //initializare culori
-  void _initColors(int index){
-      _cellColors.add(_colors[index % 2]);
+  void _initColors(int index) {
+    _cellColors.add(_colors[index % 2]);
   }
 
   //player audio
@@ -56,7 +61,7 @@ class _HomePageState extends State<HomePage> {
   bool _isPlaying = false;
 
   //animatie
-  void _startAnimation(int index){
+  void _startAnimation(int index) {
     setState(() {
       _cellColors[index] = _colors[index % 2 + 2];
     });
@@ -88,7 +93,7 @@ class _HomePageState extends State<HomePage> {
                   _startAnimation(index);
 
                   //nu exista un alt fisier media pornit
-                  if (!_isPlaying){
+                  if (!_isPlaying) {
                     setState(() {
                       _isPlaying = true;
                     });
@@ -98,7 +103,7 @@ class _HomePageState extends State<HomePage> {
                   }
 
                   //exista un fisier media pornit deja
-                  else{
+                  else {
                     setState(() {
                       _isPlaying = false;
                     });
@@ -110,7 +115,7 @@ class _HomePageState extends State<HomePage> {
                 },
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 1500),
-                  onEnd: (){
+                  onEnd: () {
                     setState(() {
                       _cellColors[index] = _colors[index % 2];
                     });

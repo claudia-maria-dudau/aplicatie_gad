@@ -255,7 +255,8 @@ class _HomePageState extends State<HomePage> {
                                               Expanded(
                                                 child: Padding(
                                                   padding:
-                                                      const EdgeInsets.only(bottom: 8),
+                                                      const EdgeInsets.only(
+                                                          bottom: 8),
                                                   child: Column(
                                                     children: <Widget>[
                                                       Text(

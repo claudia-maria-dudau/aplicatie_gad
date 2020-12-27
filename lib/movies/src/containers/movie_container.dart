@@ -6,7 +6,6 @@ import 'package:meta/meta.dart';
 import 'package:flutter/widgets.dart';
 import 'package:aplicatie_gad/movies/src/models/movie.dart';
 
-
 class MovieContainer extends StatelessWidget {
   const MovieContainer({Key key, @required this.builder}) : super(key: key);
 
@@ -16,7 +15,8 @@ class MovieContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreConnector<AppState, Movie>(
       converter: (Store<AppState> store) {
-        return store.state.movies.firstWhere((Movie movie) => movie.movieId == store.state.selectedMovie);
+        return store.state.movies.firstWhere(
+            (Movie movie) => movie.movieId == store.state.selectedMovie);
       },
       builder: builder,
     );

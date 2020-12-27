@@ -11,7 +11,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key key}) : super(key : key);
+  const MyApp({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key key, this.title}) : super(key : key);
+  const HomePage({Key key, this.title}) : super(key: key);
 
   final String title;
 
@@ -31,7 +31,7 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-enum Valuta {eur, usd, gbp}
+enum Valuta { eur, usd, gbp }
 
 class _HomePageState extends State<HomePage> {
   String convertedValue = '';
@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
   String error = '';
   Valuta selected = Valuta.eur;
 
-  void _convert(){
+  void _convert() {
     double value;
     try {
       if (selected == Valuta.eur)
@@ -48,8 +48,7 @@ class _HomePageState extends State<HomePage> {
         value = double.parse(text) * 4.11;
       else
         value = double.parse(text) * 5.45;
-    }
-    catch(e){
+    } catch (e) {
       rethrow;
     }
 
@@ -68,8 +67,8 @@ class _HomePageState extends State<HomePage> {
       ),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(3, 10, 3, 0),
-        children: <Widget> [
-            Column(
+        children: <Widget>[
+          Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
@@ -78,7 +77,7 @@ class _HomePageState extends State<HomePage> {
                 style: const TextStyle(
                   fontSize: 20,
                 ),
-                onChanged: (String value){
+                onChanged: (String value) {
                   setState(() {
                     text = value;
                   });
@@ -93,46 +92,41 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               RadioListTile<Valuta>(
-                title: const Text('EUR'),
-                value: Valuta.eur,
-                groupValue: selected,
-                onChanged: (Valuta value){
-                  setState(() {
-                    selected = value;
-                  });
-                }
-                ),
+                  title: const Text('EUR'),
+                  value: Valuta.eur,
+                  groupValue: selected,
+                  onChanged: (Valuta value) {
+                    setState(() {
+                      selected = value;
+                    });
+                  }),
               RadioListTile<Valuta>(
                   title: const Text('USD'),
                   value: Valuta.usd,
                   groupValue: selected,
-                  onChanged: (Valuta value){
+                  onChanged: (Valuta value) {
                     setState(() {
                       selected = value;
                     });
-                  }
-              ),
+                  }),
               RadioListTile<Valuta>(
                   title: const Text('GBP'),
                   value: Valuta.gbp,
                   groupValue: selected,
-                  onChanged: (Valuta value){
+                  onChanged: (Valuta value) {
                     setState(() {
                       selected = value;
                     });
-                  }
-              ),
+                  }),
               RaisedButton(
                 child: const Text('CONVERT!'),
-                onPressed: (){
-                  if (text == ''){
+                onPressed: () {
+                  if (text == '') {
                     setState(() {
                       error = 'Please enter a number';
                       convertedValue = '';
                     });
-                  }
-
-                  else{
+                  } else {
                     setState(() {
                       error = '';
                     });
@@ -140,13 +134,11 @@ class _HomePageState extends State<HomePage> {
                   }
                 },
               ),
-              Text(
-                '$convertedValue',
-                style: const TextStyle(
-                  color: Colors.blueGrey,
-                  fontSize: 25,
-                )
-              ),
+              Text('$convertedValue',
+                  style: const TextStyle(
+                    color: Colors.blueGrey,
+                    fontSize: 25,
+                  )),
             ],
           ),
         ],

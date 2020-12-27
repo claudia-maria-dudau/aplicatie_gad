@@ -17,15 +17,19 @@ abstract class Movie implements Built<Movie, MovieBuilder> {
 
   Movie._();
 
-
   @BuiltValueField(wireName: 'id')
   int get movieId;
 
   String get title;
+
   int get year;
+
   num get rating;
+
   int get runtime;
+
   BuiltList<String> get genres;
+
   String get summary;
 
   @BuiltValueField(wireName: 'background_image')

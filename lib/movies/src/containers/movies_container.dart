@@ -7,7 +7,6 @@ import 'package:built_collection/built_collection.dart';
 import 'package:flutter/widgets.dart';
 import 'package:aplicatie_gad/movies/src/models/movie.dart';
 
-
 class MoviesContainer extends StatelessWidget {
   const MoviesContainer({Key key, @required this.builder}) : super(key: key);
 
