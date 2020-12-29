@@ -1,9 +1,4 @@
-library get_movies;
-
-import 'package:aplicatie_gad/movies/src/models/movie.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-part 'get_movies.freezed.dart';
+part of actions;
 
 @freezed
 abstract class GetMovies with _$GetMovies {

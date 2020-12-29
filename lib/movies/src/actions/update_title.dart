@@ -1,8 +1,4 @@
-library update_title;
-
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-part 'update_title.freezed.dart';
+part of actions;
 
 @freezed
 abstract class UpdateTitle with _$UpdateTitle {

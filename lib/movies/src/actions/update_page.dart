@@ -1,8 +1,4 @@
-library update_page;
-
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-part 'update_page.freezed.dart';
+part of actions;
 
 @freezed
 abstract class UpdatePage with _$UpdatePage {

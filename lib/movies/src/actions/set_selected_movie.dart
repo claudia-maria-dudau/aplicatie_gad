@@ -1,8 +1,4 @@
-library set_selected_movie;
-
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-part 'set_selected_movie.freezed.dart';
+part of actions;
 
 @freezed
 abstract class SetSelectedMovie with _$SetSelectedMovie {

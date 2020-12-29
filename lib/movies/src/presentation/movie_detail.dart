@@ -1,5 +1,5 @@
 import 'package:aplicatie_gad/movies/src/containers/movie_container.dart';
-import 'package:aplicatie_gad/movies/src/models/movie.dart';
+import 'package:aplicatie_gad/movies/src/models/index.dart';
 import 'package:flutter/material.dart';
 
 class MovieDetail extends StatelessWidget {

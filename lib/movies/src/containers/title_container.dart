@@ -1,4 +1,4 @@
-import 'package:aplicatie_gad/movies/src/models/app_state.dart';
+import 'package:aplicatie_gad/movies/src/models/index.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter/material.dart';

@@ -1,8 +1,4 @@
-library update_genre;
-
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-part 'update_genre.freezed.dart';
+part of actions;
 
 @freezed
 abstract class UpdateGenre with _$UpdateGenre {
